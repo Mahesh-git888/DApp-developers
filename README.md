@@ -79,6 +79,9 @@ This blockchain-based microfinance platform aims to enhance financial inclusion 
 - **Members:** Chakradhar, Jaswanth aditya, Mahesh Datta
 - **College:** IIIT Sricity
 
+- ## Presentation Slides
+For more detailed information, you can view the presentation slides [here](https://github.com/Mahesh-git888/DApp-developers/blob/main/Blockchain-based-Microfinance-Platform%20(1).pptx)
+
 ## Repository Structure
 ```plaintext
 blockchain-microfinance/
