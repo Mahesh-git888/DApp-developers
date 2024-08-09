@@ -1,0 +1,597 @@
+{
+    "contractName": "Microfinance",
+    "abi": [
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "_name",
+            "type": "string"
+          }
+        ],
+        "name": "setUserProfile",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_user",
+            "type": "address"
+          }
+        ],
+        "name": "getUserProfile",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "addBalance",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ],
+    "bytecode": "0x608060405234801561001057600080fd5b5061011f806100206000396000f3fe6080604052600436106100465760003560e01c806322f0a5f61461004b5780632a1afcd9146100ae578063d13e5c45146100d3575b600080fd5b61006c60048036038101906100679190610124565b6100ed565b6040516100799190610191565b60405180910390f35b6100bc60048036038101906100b7919061010f565b610105565b6040516100c99190610191565b60405180910390f35b6100db610136565b6040516100e89190610191565b60405180910390f35b60005481565b600081815260208190526040812055565b60005490565b60008054909101905556fea26469706673582212207a9c11d0e66c58b46ec19b2a150501e9d5b18313089d2ff7a66b4236aa0467c864736f6c63430008000033",
+    "deployedBytecode": "0x608060405234801561001057600080fd5b5061011f806100206000396000f3fe6080604052600436106100465760003560e01c806322f0a5f61461004b5780632a1afcd9146100ae578063d13e5c45146100d3575b600080fd5b61006c60048036038101906100679190610124565b6100ed565b6040516100799190610191565b60405180910390f35b6100bc60048036038101906100b7919061010f565b610105565b6040516100c99190610191565b60405180910390f35b6100db610136565b6040516100e89190610191565b60405180910390f35b60005481565b600081815260208190526040812055565b60005490565b60008054909101905556fea26469706673582212207a9c11d0e66c58b46ec19b2a150501e9d5b18313089d2ff7a66b4236aa0467c864736f6c63430008000033",
+    "sourceMap": "25:1149:0:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "25:1149:0:-:0;;;;;",
+    "source": "pragma solidity ^0.8.0;\n\ncontract Microfinance {\n    struct UserProfile {\n        string name;\n        address userAddress;\n        uint256 balance;\n    }\n\n    mapping(address => UserProfile) private profiles;\n\n    function setUserProfile(string memory _name) public {\n        profiles[msg.sender] = UserProfile(_name, msg.sender, 0);\n    }\n\n    function getUserProfile(address _user) public view returns (string memory, address, uint256) {\n        UserProfile memory profile = profiles[_user];\n        return (profile.name, profile.userAddress, profile.balance);\n    }\n\n    function addBalance(uint256 _amount) public {\n        profiles[msg.sender].balance += _amount;\n    }\n}",
+    "sourcePath": "Microfinance.sol",
+    "ast": {
+      "absolutePath": "contracts/Microfinance.sol",
+      "exportedSymbols": {
+        "Microfinance": [
+          5
+        ]
+      },
+      "nodeType": "SourceUnit",
+      "nodes": [
+        {
+          "nodeType": "PragmaDirective",
+          "id": 1,
+          "src": "0:23:0",
+          "literals": [
+            "solidity",
+            "^",
+            "0.8.0"
+          ]
+        },
+        {
+          "nodeType": "ContractDefinition",
+          "id": 5,
+          "src": "25:1149:0",
+          "contractKind": "contract",
+          "abstract": false,
+          "fullyImplemented": true,
+          "name": "Microfinance",
+          "documentation": null,
+          "canonicalName": "Microfinance",
+          "baseContracts": [],
+          "contractDependencies": [],
+          "linearizedBaseContracts": [
+            5
+          ],
+          "nodes": [
+            {
+              "nodeType": "StructDefinition",
+              "id": 2,
+              "src": "55:93:0",
+              "name": "UserProfile",
+              "canonicalName": "Microfinance.UserProfile",
+              "members": [
+                {
+                  "nodeType": "VariableDeclaration",
+                  "id": 3,
+                  "src": "73:16:0",
+                  "name": "name",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  }
+                },
+                {
+                  "nodeType": "VariableDeclaration",
+                  "id": 4,
+                  "src": "97:20:0",
+                  "name": "userAddress",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                {
+                  "nodeType": "VariableDeclaration",
+                  "id": 5,
+                  "src": "127:21:0",
+                  "name": "balance",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                }
+              ],
+              "documentation": null
+            },
+            {
+              "nodeType": "VariableDeclaration",
+              "id": 6,
+              "src": "160:54:0",
+              "stateVariable": true,
+              "name": "profiles",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$t_address$t_struct$_UserProfile$23_memory_$",
+                "typeString": "mapping(address => struct Microfinance.UserProfile)"
+              },
+              "typeName": {
+                "nodeType": "Mapping",
+                "src": "160:54:0",
+                "keyType": {
+                  "nodeType": "ElementaryTypeName",
+                  "src": "168:7:0",
+                  "name": "address",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "valueType": {
+                  "nodeType": "UserDefinedTypeName",
+                  "src": "177:27:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$UserProfile$23_storage_ptr",
+                    "typeString": "struct Microfinance.UserProfile"
+                  },
+                  "path": [
+                    {
+                      "nodeType": "Identifier",
+                      "src": "177:20:0",
+                      "name": "UserProfile",
+                      "referencedDeclaration": 2,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$UserProfile$23_storage_ptr",
+                        "typeString": "struct Microfinance.UserProfile"
+                      }
+                    }
+                  ]
+                }
+              },
+              "initialValue": null,
+              "constant": false,
+              "indexed": false,
+              "visibility": "private",
+              "stateMutability": "nonpayable",
+              "override": null
+            },
+            {
+              "nodeType": "FunctionDefinition",
+              "id": 7,
+              "src": "226:135:0",
+              "documentation": null,
+              "name": "setUserProfile",
+              "visibility": "public",
+              "stateMutability": "nonpayable",
+              "isConstructor": false,
+              "isFallback": false,
+              "isReceiveEther": false,
+              "isVirtual": false,
+              "isOverride": false,
+              "parameters": {
+                "nodeType": "ParameterList",
+                "id": 8,
+                "src": "249:20:0",
+                "parameters": [
+                  {
+                    "nodeType": "VariableDeclaration",
+                    "id": 9,
+                    "src": "249:20:0",
+                    "name": "_name",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string"
+                    },
+                    "typeName": {
+                      "nodeType": "ElementaryTypeName",
+                      "src": "249:6:0",
+                      "name": "string",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "returnParameters": {
+                "nodeType": "ParameterList",
+                "id": 10,
+                "src": "278:0:0",
+                "parameters": []
+              },
+              "body": {
+                "nodeType": "Block",
+                "id": 11,
+                "src": "287:74:0",
+                "statements": [
+                  {
+                    "nodeType": "ExpressionStatement",
+                    "id": 12,
+                    "src": "307:54:0",
+                    "expression": {
+                      "nodeType": "Assignment",
+                      "id": 13,
+                      "src": "307:54:0",
+                      "operator": "=",
+                      "leftHandSide": {
+                        "nodeType": "IndexAccess",
+                        "id": 14,
+                        "src": "307:24:0",
+                        "baseExpression": {
+                          "nodeType": "Identifier",
+                          "src": "307:8:0",
+                          "name": "profiles",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$t_address$t_struct$_UserProfile$23_storage_$",
+                            "typeString": "mapping(address => struct Microfinance.UserProfile)"
+                          }
+                        },
+                        "indexExpression": {
+                          "nodeType": "MemberAccess",
+                          "src": "316:15:0",
+                          "expression": {
+                            "nodeType": "Identifier",
+                            "src": "316:8:0",
+                            "name": "msg",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "memberName": "sender",
+                          "referencedDeclaration": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$UserProfile$23_storage_$",
+                          "typeString": "struct Microfinance.UserProfile"
+                        }
+                      },
+                      "rightHandSide": {
+                        "nodeType": "FunctionCall",
+                        "id": 15,
+                        "src": "333:28:0",
+                        "kind": "structConstructorCall",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$UserProfile$23_memory_ptr",
+                          "typeString": "struct Microfinance.UserProfile memory"
+                        },
+                        "arguments": [
+                          {
+                            "nodeType": "Identifier",
+                            "src": "353:5:0",
+                            "name": "_name",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string"
+                            }
+                          },
+                          {
+                            "nodeType": "MemberAccess",
+                            "src": "360:15:0",
+                            "expression": {
+                              "nodeType": "Identifier",
+                              "src": "360:8:0",
+                              "name": "msg",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "memberName": "sender",
+                            "referencedDeclaration": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          {
+                            "nodeType": "Literal",
+                            "id": 16,
+                            "src": "377:1:0",
+                            "kind": "number",
+                            "value": "0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "modifiers": [],
+              "baseFunctions": []
+            },
+            {
+              "nodeType": "FunctionDefinition",
+              "id": 17,
+              "src": "367:147:0",
+              "documentation": null,
+              "name": "getUserProfile",
+              "visibility": "public",
+              "stateMutability": "view",
+              "isConstructor": false,
+              "isFallback": false,
+              "isReceiveEther": false,
+              "isVirtual": false,
+              "isOverride": false,
+              "parameters": {
+                "nodeType": "ParameterList",
+                "id": 18,
+                "src": "390:31:0",
+                "parameters": [
+                  {
+                    "nodeType": "VariableDeclaration",
+                    "id": 19,
+                    "src": "390:31:0",
+                    "name": "_user",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "typeName": {
+                      "nodeType": "ElementaryTypeName",
+                      "src": "390:7:0",
+                      "name": "address",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  }
+                ]
+              },
+              "returnParameters": {
+                "nodeType": "ParameterList",
+                "id": 20,
+                "src": "434:66:0",
+                "parameters": [
+                  {
+                    "nodeType": "VariableDeclaration",
+                    "id": 21,
+                    "src": "435:20:0",
+                    "name": "",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string"
+                    },
+                    "typeName": {
+                      "nodeType": "ElementaryTypeName",
+                      "src": "435:6:0",
+                      "name": "string",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string"
+                      }
+                    }
+                  },
+                  {
+                    "nodeType": "VariableDeclaration",
+                    "id": 22,
+                    "src": "457:16:0",
+                    "name": "",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "typeName": {
+                      "nodeType": "ElementaryTypeName",
+                      "src": "457:7:0",
+                      "name": "address",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  },
+                  {
+                    "nodeType": "VariableDeclaration",
+                    "id": 23,
+                    "src": "474:25:0",
+                    "name": "",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "typeName": {
+                      "nodeType": "ElementaryTypeName",
+                      "src": "474:7:0",
+                      "name": "uint256",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    }
+                  }
+                ]
+              },
+              "body": {
+                "nodeType": "Block",
+                "id": 24,
+                "src": "512:2:0",
+                "statements": []
+              },
+              "modifiers": [],
+              "baseFunctions": []
+            },
+            {
+              "nodeType": "FunctionDefinition",
+              "id": 25,
+              "src": "514:91:0",
+              "documentation": null,
+              "name": "addBalance",
+              "visibility": "public",
+              "stateMutability": "nonpayable",
+              "isConstructor": false,
+              "isFallback": false,
+              "isReceiveEther": false,
+              "isVirtual": false,
+              "isOverride": false,
+              "parameters": {
+                "nodeType": "ParameterList",
+                "id": 26,
+                "src": "537:23:0",
+                "parameters": [
+                  {
+                    "nodeType": "VariableDeclaration",
+                    "id": 27,
+                    "src": "537:23:0",
+                    "name": "_amount",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "typeName": {
+                      "nodeType": "ElementaryTypeName",
+                      "src": "537:7:0",
+                      "name": "uint256",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    }
+                  }
+                ]
+              },
+              "returnParameters": {
+                "nodeType": "ParameterList",
+                "id": 28,
+                "src": "562:0:0",
+                "parameters": []
+              },
+              "body": {
+                "nodeType": "Block",
+                "id": 29,
+                "src": "570:35:0",
+                "statements": [
+                  {
+                    "nodeType": "ExpressionStatement",
+                    "id": 30,
+                    "src": "586:19:0",
+                    "expression": {
+                      "nodeType": "Assignment",
+                      "id": 31,
+                      "src": "586:19:0",
+                      "operator": "+=",
+                      "leftHandSide": {
+                        "nodeType": "MemberAccess",
+                        "id": 32,
+                        "src": "586:15:0",
+                        "expression": {
+                          "nodeType": "IndexAccess",
+                          "id": 33,
+                          "src": "586:8:0",
+                          "baseExpression": {
+                            "nodeType": "Identifier",
+                            "src": "586:8:0",
+                            "name": "profiles",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$t_address$t_struct$_UserProfile$23_storage_$",
+                              "typeString": "mapping(address => struct Microfinance.UserProfile)"
+                            }
+                          },
+                          "indexExpression": {
+                            "nodeType": "MemberAccess",
+                            "id": 34,
+                            "src": "594:15:0",
+                            "expression": {
+                              "nodeType": "Identifier",
+                              "src": "594:8:0",
+                              "name": "msg",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "memberName": "sender",
+                            "referencedDeclaration": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$UserProfile$23_storage_$",
+                            "typeString": "struct Microfinance.UserProfile"
+                          }
+                        },
+                        "memberName": "balance",
+                        "referencedDeclaration": 5,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "rightHandSide": {
+                        "nodeType": "Identifier",
+                        "src": "604:7:0",
+                        "name": "_amount",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "modifiers": [],
+              "baseFunctions": []
+            }
+          ],
+          "scope": 0,
+          "documentation": null,
+          "fullyImplemented": true,
+          "usedErrors": []
+        }
+      ],
+      "license": "UNLICENSED"
+    },
+    "compiler": {
+      "name": "solc",
+      "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
+    },
+    "networks": {},
+    "schemaVersion": "3.2.9",
+    "updatedAt": "2024-08-09T00:00:00.000Z"
+  }

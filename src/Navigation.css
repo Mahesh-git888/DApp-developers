@@ -1,0 +1,45 @@
+/* src/Navigation.css */
+
+body{
+    
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+}
+
+.navigation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100rem; /* Full viewport height */
+    width: 100rem; /* Full viewport width */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
+    border-radius: 5px;
+    background-color: bisque;
+}
+
+.block {
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+    width: 200px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.block:hover {
+    background-color: #ff0000;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin: 10px;
+    color: black; /* Corrected color syntax */
+}
